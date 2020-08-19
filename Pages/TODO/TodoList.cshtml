@@ -1,0 +1,45 @@
+﻿@page
+@model ToDoList.Pages.TODO.TodoListModel
+@{
+    ViewData["Title"] = "TodoList";
+}
+
+<h1>Your TodoList</h1>
+<br />
+<div class="col-3">
+    <a asp-page="CreateToDo" class="btn btn-info btn-lg text-white">Add A New Todo</a>
+</div>
+<br />
+
+<form method="post">
+    <div class="container row">
+        @if (Model.Todos.Count() > 0)
+        {
+            @foreach (var item in Model.Todos)
+            {
+                <div class="card" style="width: 18rem; margin:4px;">
+                    <div class="card-body">
+                        <h5 class="card-title">@Html.DisplayFor(m => item.TodoName)</h5>
+                        <p class="card-text">@Html.DisplayFor(m => item.Tododesc)</p>
+
+                        <a asp-page="EditTodo" asp-route-id="@item.Id" class="btn btn-success">Edit ToDo</a>
+
+                        <button asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div>
+                <br />
+                <h3>Ohh! there are no todos left</h3>
+                <br />
+                <p class="lead">lets add some todos to manage your work</p>
+            </div>
+        }
+        </div>
+</form>  
+
+
+

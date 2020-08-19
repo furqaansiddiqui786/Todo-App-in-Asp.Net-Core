@@ -1,0 +1,59 @@
+﻿@page
+@model ToDoList.Pages.TODO.EditTodoModel
+@{
+    ViewData["Title"] = "EditTodo";
+}
+
+<h1>Edit Todo</h1>
+<br />
+<div class="border container" style="padding:30px">
+    <form method="post">
+        <input type="hidden" asp-for="Todo.Id" />
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+        <!-- for name -->
+        <div class="form-group row">
+            <div class="col-4">
+                <h5>
+                    <label asp-for="Todo.TodoName">
+                        ToDo Name
+                    </label>
+                </h5>
+            </div>
+            <div class="col-6">
+                <input asp-for="Todo.TodoName" class="form-control" />
+                <span asp-validation-for="Todo.TodoName" class="text-danger"></span>
+            </div>
+        </div>
+
+        <!-- for name -->
+        <div class="form-group row">
+            <div class="col-4">
+                <h5>
+                    <label asp-for="Todo.Tododesc">
+                        ToDo Description
+                    </label>
+                </h5>
+            </div>
+            <div class="col-6">
+                <input asp-for="Todo.Tododesc" class="form-control" />
+                <span asp-validation-for="Todo.Tododesc" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-4">
+
+            </div>
+            <div class="col-6">
+                <input type="submit" value="Update" class="btn btn-primary" />
+                <a asp-page="TodoList" class="btn btn-danger">Go Back</a>
+            </div>
+        </div>
+
+    </form>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
